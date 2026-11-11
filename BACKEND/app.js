@@ -27,7 +27,7 @@ app.post('/salvar-agendamento', async (req, res) => {
 
         const [result] = await connection.execute(insertQuery, [nome, procedimeno, dia, horario]);
         const mensagem = ' Ola ${nome}, seu agendamento foi realizado de ${procedimento} com sucesso para o dia ${dia} no horário ${horario}.';
-
+        res.status(200).json({ message: mensagem });
     } catch (error) {
         console.error('Erro ao salvar agendamento:', error);
         res.status(500).json({ error: 'Erro ao salvar agendamento' });
